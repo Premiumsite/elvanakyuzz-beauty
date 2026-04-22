@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Elvan Akyüz Beauty | Kadıköy Güzellik Salonu</title>
+  <meta name="description" content="Kadıköy'de cilt bakımı, kalıcı makyaj, bölgesel incelme, iğneli epilasyon ve profesyonel güzellik uygulamaları için Elvan Akyüz Beauty." />
+  <meta name="theme-color" content="#090909" />
+  <meta name="format-detection" content="telephone=yes" />
+  <style>
+    :root{
+      --bg:#070707;
+      --bg-soft:#0f0f10;
+      --card:rgba(255,255,255,.07);
+      --card-2:rgba(255,255,255,.04);
+      --stroke:rgba(255,255,255,.12);
+      --gold:#d9b45c;
+      --gold-2:#f3d98b;
+      --text:#f7f1e6;
+      --muted:#b9b0a2;
+      --shadow:0 20px 60px rgba(0,0,0,.45);
+      --radius:26px;
+      --nav-h:76px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: Georgia, 'Times New Roman', serif;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(217,180,92,.11), transparent 30%),
+        radial-gradient(circle at 80% 0%, rgba(255,220,120,.08), transparent 24%),
+        linear-gradient(180deg,#060606 0%, #090909 30%, #0b0b0b 100%);
+      color:var(--text);
+      overflow-x:hidden;
+      min-height:100dvh;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background:
+        linear-gradient(120deg, transparent 0 44%, rgba(255,255,255,.018) 50%, transparent 56%),
+        radial-gradient(circle at center, transparent 55%, rgba(255,255,255,.015) 100%);
+      mix-blend-mode:screen;
+      opacity:.75;
+      z-index:0;
+    }
+
+    .starfield{position:fixed; inset:0; pointer-events:none; z-index:1; overflow:hidden}
+    .star{
+      position:absolute;
+      width:2px;
+      height:2px;
+      border-radius:999px;
+      background:linear-gradient(90deg, rgba(243,217,139,1), rgba(243,217,139,.2));
+      box-shadow:0 0 14px rgba(243,217,139,.95), 0 0 32px rgba(243,217,139,.4);
+      animation:shoot linear infinite;
+      opacity:0;
+    }
+    .star::after{
+      content:"";
+      position:absolute;
+      top:50%;
+      left:-150px;
+      transform:translateY(-50%);
+      width:160px;
+      height:1.4px;
+      background:linear-gradient(90deg, rgba(255,230,150,0), rgba(255,230,150,.95));
+      filter:blur(.25px);
+    }
+    @keyframes shoot{
+      0%{transform:translate3d(-8vw,-10vh,0) rotate(-18deg); opacity:0}
+      8%{opacity:1}
+      100%{transform:translate3d(120vw,80vh,0) rotate(-18deg); opacity:0}
+    }
+
+    .wrap{position:relative; z-index:2}
+    .container{width:min(1180px, calc(100% - 32px)); margin:0 auto}
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:40;
+      backdrop-filter:blur(16px);
+      background:rgba(7,7,7,.58);
+      border-bottom:1px solid rgba(255,255,255,.08);
+      padding-top:max(10px, env(safe-area-inset-top));
+    }
+    .nav{
+      min-height:var(--nav-h);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+    }
+    .brand{display:flex; gap:14px; align-items:center; min-width:0}
+    .brand-mark{
+      width:48px; height:48px; border-radius:18px;
+      background:linear-gradient(135deg, rgba(217,180,92,.28), rgba(255,255,255,.04));
+      border:1px solid rgba(255,255,255,.14);
+      display:grid; place-items:center;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.08), 0 8px 30px rgba(217,180,92,.18);
+      flex:0 0 auto;
+    }
+    .brand-mark span{font-size:24px; color:var(--gold-2)}
+    .brand-text{min-width:0}
+    .eyebrow{
+      font-family:'Brush Script MT', 'Segoe Script', cursive;
+      letter-spacing:.08em;
+      color:var(--gold-2);
+      font-size:24px;
+      line-height:1;
+      opacity:.95;
+    }
+    .brand-title{
+      font-size:15px; letter-spacing:.22em; text-transform:uppercase;
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    }
+    .nav-links{display:flex; gap:20px; flex-wrap:wrap; justify-content:flex-end}
+    .nav-links a{
+      color:rgba(247,241,230,.84); text-decoration:none; font-size:13px; letter-spacing:.12em; text-transform:uppercase;
+      transition:.25s ease;
+    }
+    .nav-links a:hover{color:var(--gold-2)}
+
+    .hero{
+      min-height:calc(100svh - var(--nav-h));
+      display:grid;
+      align-items:center;
+      padding:34px 0 34px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:28px;
+      align-items:stretch;
+    }
+    .hero-copy,.hero-card,.glass,.service,.review,.stat,.info-card,.gallery-card,.faq-item,.contact-card{backdrop-filter:blur(16px)}
+    .hero-video-shell{
+      display:grid;
+      grid-template-columns:1.08fr .92fr;
+      gap:28px;
+      align-items:stretch;
+      margin-bottom:28px;
+    }
+    .hero-video-wrap{
+      position:relative;
+      min-height:420px;
+      border-radius:34px;
+      overflow:visible;
+      background:transparent;
+      box-shadow:none;
+      isolation:isolate;
+    }
+    .hero-video-wrap::before{
+      content:"";
+      position:absolute;
+      inset:18px -18px -18px -18px;
+      z-index:0;
+      border-radius:42px;
+      background:
+        radial-gradient(circle at 18% 25%, rgba(243,217,139,.32), transparent 24%),
+        radial-gradient(circle at 78% 20%, rgba(243,217,139,.16), transparent 18%),
+        radial-gradient(circle at 70% 78%, rgba(217,180,92,.22), transparent 26%),
+        radial-gradient(circle at 35% 82%, rgba(243,217,139,.10), transparent 20%);
+      filter:blur(26px);
+      animation:haloMove 10s linear infinite;
+      opacity:.95;
+      pointer-events:none;
+    }
+    .hero-video-frame{
+      position:relative;
+      z-index:2;
+      min-height:420px;
+      border-radius:34px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.11);
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      box-shadow:var(--shadow);
+    }
+    .hero-video-frame::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg, rgba(0,0,0,.02), rgba(0,0,0,.10));
+      pointer-events:none;
+      z-index:2;
+    }
+    .hero-video-wrap video{
+      width:100%;
+      height:100%;
+      display:block;
+      object-fit:cover;
+      background:#050505;
+      position:relative;
+      z-index:1;
+      cursor:pointer;
+    }
+    
+    @keyframes haloMove{
+      0%{transform:rotate(0deg) scale(1)}
+      50%{transform:rotate(180deg) scale(1.06)}
+      100%{transform:rotate(360deg) scale(1)}
+    }
+    .video-overlay-card{display:none;} 
+    .video-play-btn{
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      width:90px;
+      height:90px;
+      border-radius:50%;
+      background:rgba(0,0,0,.55);
+      border:1px solid rgba(255,255,255,.25);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      z-index:3;
+      backdrop-filter:blur(6px);
+      box-shadow:0 10px 40px rgba(0,0,0,.6);
+      transition:.25s ease;
+    }
+    .video-play-btn:hover{
+      transform:translate(-50%,-50%) scale(1.08);
+      background:rgba(0,0,0,.75);
+    }
+    .video-play-btn:after{
+      content:"";
+      border-left:22px solid var(--gold-2);
+      border-top:14px solid transparent;
+      border-bottom:14px solid transparent;
+      margin-left:6px;
+    }
+    .video-controls-mini{
+      position:absolute;
+      right:12px;
+      bottom:12px;
+      display:flex;
+      gap:8px;
+      z-index:3;
+    }
+    .video-mini-btn{
+      width:38px;
+      height:38px;
+      border-radius:50%;
+      background:rgba(0,0,0,.6);
+      border:1px solid rgba(255,255,255,.2);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#fff;
+      font-size:12px;
+      cursor:pointer;
+    }
+    .video-control{
+      appearance:none;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(7,7,7,.48);
+      color:var(--text);
+      min-height:46px;
+      padding:0 16px;
+      border-radius:999px;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      backdrop-filter:blur(14px);
+      box-shadow:0 14px 34px rgba(0,0,0,.22);
+      font-family:inherit;
+      font-size:12px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      cursor:pointer;
+      transition:transform .28s ease, border-color .28s ease, background .28s ease;
+    }
+    .video-control:hover{
+      transform:translateY(-2px);
+      border-color:rgba(243,217,139,.45);
+      background:rgba(12,12,12,.62);
+    }
+    .video-control .icon{
+      width:24px;
+      height:24px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg, rgba(217,180,92,.34), rgba(255,255,255,.08));
+      color:var(--gold-2);
+      font-size:12px;
+      flex:0 0 auto;
+    }
+    @keyframes haloMove{
+      0%{transform:rotate(0deg) scale(1)}
+      50%{transform:rotate(180deg) scale(1.08)}
+      100%{transform:rotate(360deg) scale(1)}
+    }
+    .video-overlay-card{
+      pointer-events:none;
+      position:absolute;
+      left:20px;
+      right:20px;
+      bottom:20px;
+      z-index:2;
+      padding:18px 20px;
+      border-radius:24px;
+      background:rgba(7,7,7,.52);
+      border:1px solid rgba(255,255,255,.11);
+      backdrop-filter:blur(14px);
+      box-shadow:0 18px 40px rgba(0,0,0,.25);
+    }
+    .video-overlay-card span{
+      display:block;
+      color:var(--gold-2);
+      font-size:12px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      margin-bottom:8px;
+    }
+    .video-overlay-card strong{
+      display:block;
+      font-size:22px;
+      line-height:1.35;
+      max-width:18ch;
+    }
+    .hero-copy{
+      padding:34px;
+      border-radius:34px;
+      border:1px solid rgba(255,255,255,.11);
+      background:linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.025));
+      box-shadow:var(--shadow);
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      min-height:460px;
+      position:relative;
+      overflow:hidden;
+    }
+    .badge{
+      width:max-content;
+      display:inline-flex; align-items:center; gap:10px;
+      padding:10px 16px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.05);
+      color:#f6e4b0;
+      font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+    }
+    h1{
+      margin:18px 0 14px;
+      font-size:clamp(42px, 7vw, 88px);
+      line-height:.94;
+      font-weight:700;
+      letter-spacing:-.03em;
+      max-width:10ch;
+    }
+    .hero-script{
+      display:block;
+      font-family:'Brush Script MT', 'Segoe Script', cursive;
+      color:var(--gold-2);
+      font-size:clamp(26px, 4vw, 42px);
+      font-weight:400;
+      margin-bottom:10px;
+      letter-spacing:.02em;
+    }
+    .lead{
+      max-width:600px;
+      color:var(--muted);
+      font-size:17px;
+      line-height:1.8;
+      margin:0 0 24px;
+    }
+    .cta-row{display:flex; flex-wrap:wrap; gap:14px; margin:6px 0 24px}
+    .btn{
+      text-decoration:none;
+      color:var(--text);
+      min-height:56px;
+      padding:0 22px;
+      border-radius:18px;
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.04);
+      box-shadow:0 10px 30px rgba(0,0,0,.25);
+      font-size:14px; letter-spacing:.11em; text-transform:uppercase;
+      transition:transform .28s ease, border-color .28s ease, background .28s ease, box-shadow .28s ease;
+    }
+    .btn:hover{transform:translateY(-2px); border-color:rgba(243,217,139,.45)}
+    .btn.gold{
+      background:linear-gradient(135deg, #c99c45, #f1d485 60%, #b88729);
+      color:#20180a;
+      border-color:rgba(255,226,163,.7);
+      box-shadow:0 18px 40px rgba(201,156,69,.3);
+      font-weight:700;
+    }
+    .micro-stats{
+      display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:auto;
+    }
+    .stat{
+      padding:18px;
+      border-radius:20px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.09);
+    }
+    .stat strong{display:block; font-size:26px; color:var(--gold-2); margin-bottom:6px}
+    .stat span{font-size:13px; color:var(--muted); line-height:1.5; display:block}
+
+    .hero-card{
+      padding:24px;
+      border-radius:34px;
+      border:1px solid rgba(255,255,255,.11);
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      box-shadow:var(--shadow);
+      display:grid;
+      grid-template-rows:auto auto 1fr auto;
+      gap:18px;
+      min-height:420px;
+      overflow:hidden;
+      position:relative;
+    }
+    .hero-photo{
+      position:relative;
+      min-height:300px;
+      border-radius:26px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.08);
+      background:
+        radial-gradient(circle at 50% 20%, rgba(243,217,139,.28), transparent 30%),
+        linear-gradient(160deg, rgba(255,255,255,.09), rgba(255,255,255,.02)),
+        url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80') center/cover;
+    }
+    .hero-photo::after{
+      content:"";
+      position:absolute; inset:0;
+      background:linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.45));
+    }
+    .floating-note{
+      position:absolute;
+      right:16px; bottom:16px;
+      z-index:1;
+      padding:14px 16px;
+      background:rgba(8,8,8,.64);
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:18px;
+      max-width:220px;
+      box-shadow:var(--shadow);
+    }
+    .floating-note span{display:block; color:var(--gold-2); font-size:12px; letter-spacing:.12em; text-transform:uppercase; margin-bottom:6px}
+    .floating-note strong{display:block; font-size:18px; line-height:1.35}
+    .hero-points{display:grid; gap:12px}
+    .hero-point{
+      padding:16px 18px;
+      border-radius:20px;
+      border:1px solid rgba(255,255,255,.09);
+      background:rgba(255,255,255,.035);
+      display:flex; gap:14px; align-items:flex-start;
+    }
+    .hero-point b{display:block; margin-bottom:5px; font-size:15px}
+    .hero-point span{display:block; color:var(--muted); line-height:1.6; font-size:14px}
+    .dot{
+      width:12px; height:12px; border-radius:50%;
+      background:radial-gradient(circle, #ffe39a, #b8892f);
+      box-shadow:0 0 18px rgba(243,217,139,.55);
+      margin-top:5px; flex:0 0 auto;
+    }
+
+    section{padding:34px 0}
+    .section-head{display:flex; align-items:end; justify-content:space-between; gap:20px; margin-bottom:20px}
+    .section-tag{
+      font-family:'Brush Script MT', 'Segoe Script', cursive;
+      color:var(--gold-2);
+      font-size:34px; line-height:1;
+      margin-bottom:8px;
+    }
+    h2{
+      margin:0;
+      font-size:clamp(28px,4vw,52px);
+      letter-spacing:-.03em;
+      line-height:1.02;
+    }
+    .section-text{max-width:620px; color:var(--muted); line-height:1.8; font-size:16px}
+
+    .trust-grid,.services,.reviews,.contact-grid,.gallery,.stats-grid,.faq,.info-grid{
+      display:grid; gap:18px;
+    }
+    .trust-grid{grid-template-columns:repeat(3,1fr)}
+    .glass,.service,.review,.info-card,.gallery-card,.faq-item,.contact-card{
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.09);
+      border-radius:26px;
+      box-shadow:var(--shadow);
+    }
+    .glass{padding:24px}
+    .glass h3,.service h3,.review h3,.info-card h3,.contact-card h3{margin:0 0 10px; font-size:20px}
+    .glass p,.service p,.review p,.info-card p,.contact-card p,.faq-item p{margin:0; color:var(--muted); line-height:1.8}
+
+    .stats-grid{grid-template-columns:repeat(4,1fr)}
+    .info-grid{grid-template-columns:1.15fr .85fr}
+    .services{grid-template-columns:repeat(3,1fr)}
+    .service{padding:24px; position:relative; overflow:hidden}
+    .service::before{
+      content:""; position:absolute; inset:auto -30px -40px auto; width:110px; height:110px; border-radius:50%;
+      background:radial-gradient(circle, rgba(243,217,139,.16), transparent 70%);
+    }
+    .service-top{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:14px}
+    .service-icon{
+      width:52px; height:52px; border-radius:18px; display:grid; place-items:center;
+      background:linear-gradient(135deg, rgba(217,180,92,.28), rgba(255,255,255,.05));
+      border:1px solid rgba(255,255,255,.11);
+      color:var(--gold-2); font-size:22px;
+    }
+    .service small{display:block; margin-top:14px; color:#f5e6ba; letter-spacing:.1em; text-transform:uppercase; font-size:11px}
+
+    .gallery{grid-template-columns:1.08fr .92fr .92fr}
+    .gallery-card{min-height:240px; overflow:hidden; position:relative}
+    .gallery-card img{width:100%; height:100%; object-fit:cover; display:block; filter:saturate(.96) contrast(1.02)}
+    .gallery-card::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.04), rgba(0,0,0,.32));}
+    .gallery-card.tall{grid-row:span 2; min-height:520px}
+    .gallery-label{
+      position:absolute; left:16px; bottom:16px; z-index:1;
+      padding:10px 14px; border-radius:999px;
+      background:rgba(8,8,8,.64); border:1px solid rgba(255,255,255,.1);
+      color:#f7ecd0; font-size:12px; letter-spacing:.1em; text-transform:uppercase;
+    }
+
+    .reviews{grid-template-columns:repeat(3,1fr)}
+    .review{padding:24px}
+    .review-top{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:14px}
+    .stars{color:#f3d98b; letter-spacing:.18em; font-size:14px}
+    .review b{font-size:16px}
+
+    .faq{grid-template-columns:1fr 1fr}
+    .faq-item{padding:22px}
+    .faq-item h3{margin:0 0 10px; font-size:18px}
+
+    .contact-grid{grid-template-columns:.95fr 1.05fr}
+    .contact-card{padding:24px}
+    .contact-list{display:grid; gap:14px; margin-top:14px}
+    .contact-line{
+      padding:16px 18px; border-radius:18px; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.03);
+    }
+    .contact-line span{display:block; color:#f1d89c; font-size:11px; text-transform:uppercase; letter-spacing:.12em; margin-bottom:8px}
+    .contact-line a,.contact-line strong{color:var(--text); text-decoration:none; line-height:1.6}
+    .map-wrap{
+      border-radius:28px; overflow:hidden; border:1px solid rgba(255,255,255,.08); min-height:100%; background:#111;
+      box-shadow:var(--shadow);
+    }
+    .map-wrap iframe{width:100%; height:100%; min-height:520px; border:0; display:block; filter:grayscale(.08) contrast(1.02) saturate(.9)}
+
+    .cta-band{
+      margin-top:18px;
+      padding:28px;
+      border-radius:30px;
+      border:1px solid rgba(255,255,255,.09);
+      background:
+        radial-gradient(circle at 20% 20%, rgba(217,180,92,.18), transparent 28%),
+        linear-gradient(135deg, rgba(255,255,255,.055), rgba(255,255,255,.02));
+      box-shadow:var(--shadow);
+      display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap;
+    }
+    .cta-band h3{margin:0 0 8px; font-size:clamp(26px,4vw,40px)}
+    .cta-band p{margin:0; color:var(--muted); max-width:620px; line-height:1.8}
+
+    footer{
+      padding:24px 0 calc(110px + env(safe-area-inset-bottom));
+    }
+    .footer-box{
+      padding:22px 24px;
+      border-radius:24px;
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.03);
+      display:flex; justify-content:space-between; gap:18px; flex-wrap:wrap;
+      color:var(--muted);
+    }
+
+    .sticky-cta{
+      position:fixed;
+      left:12px; right:12px;
+      bottom:calc(12px + env(safe-area-inset-bottom));
+      z-index:70;
+      display:none;
+      gap:10px;
+    }
+    .sticky-cta a{
+      flex:1 1 0;
+      min-height:58px;
+      border-radius:18px;
+      text-decoration:none;
+      display:flex; align-items:center; justify-content:center; gap:10px;
+      font-size:13px; letter-spacing:.12em; text-transform:uppercase;
+      color:var(--text);
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(10,10,10,.82);
+      backdrop-filter:blur(12px);
+      box-shadow:0 18px 40px rgba(0,0,0,.28);
+    }
+    .sticky-cta a.primary{
+      background:linear-gradient(135deg, #c99c45, #f1d485 60%, #b88729);
+      color:#20180a; font-weight:800;
+      border-color:rgba(255,226,163,.7);
+    }
+
+    .reveal{opacity:0; transform:translateY(24px); transition:opacity .8s ease, transform .8s ease}
+    .reveal.show{opacity:1; transform:none}
+
+    @media (max-width: 1100px){
+      .hero-grid,.info-grid,.contact-grid,.services,.reviews,.trust-grid,.stats-grid,.faq{grid-template-columns:1fr 1fr}
+      .gallery{grid-template-columns:1fr 1fr}
+      .gallery-card.tall{grid-row:auto; min-height:300px}
+      .hero-copy,.hero-card{min-height:auto}
+      .hero-video-shell{grid-template-columns:1fr;}
+    }
+
+    @media (max-width: 760px){
+      :root{--nav-h:68px}
+      .container{width:min(100% - 20px, 1180px)}
+      .topbar{padding-top:max(6px, env(safe-area-inset-top))}
+      .nav{min-height:var(--nav-h); gap:10px}
+      .brand-mark{width:42px; height:42px; border-radius:16px}
+      .brand-title{font-size:12px; letter-spacing:.16em}
+      .eyebrow{font-size:21px}
+      .nav-links{display:none}
+      .hero{min-height:auto; padding:18px 0 16px}
+      .hero-video-shell{grid-template-columns:1fr; gap:16px; margin-bottom:16px}
+      .hero-video-wrap{min-height:300px}
+      .video-overlay-card{left:12px; right:12px; bottom:12px; padding:14px 16px; border-radius:18px}
+      .video-overlay-card strong{font-size:18px}
+      .hero-grid,.info-grid,.services,.reviews,.faq,.trust-grid,.stats-grid,.contact-grid,.gallery{grid-template-columns:1fr}
+      .hero-copy,.hero-card,.glass,.service,.review,.faq-item,.contact-card,.cta-band{padding:20px}
+      h1{max-width:11ch; font-size:clamp(36px, 13vw, 56px)}
+      .lead{font-size:15px; line-height:1.7}
+      .cta-row{gap:10px}
+      .btn{width:100%; min-height:54px; padding:0 18px; font-size:12px}
+      .micro-stats{grid-template-columns:1fr}
+      .section-head{display:block}
+      .section-text{margin-top:10px; font-size:15px}
+      .gallery-card,.gallery-card.tall{min-height:260px}
+      .map-wrap iframe{min-height:340px}
+      .sticky-cta{display:flex}
+      footer{padding-bottom:calc(102px + env(safe-area-inset-bottom))}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      html{scroll-behavior:auto}
+      .star,.reveal{animation:none !important; transition:none !important; opacity:1; transform:none}
+    }
+  </style>
+</head>
+<body>
+  <div class="starfield" aria-hidden="true">
+    <span class="star" style="top:6%;left:-10%;animation-duration:2.5s;animation-delay:.1s"></span>
+    <span class="star" style="top:14%;left:-18%;animation-duration:2.2s;animation-delay:.8s"></span>
+    <span class="star" style="top:22%;left:-14%;animation-duration:2.8s;animation-delay:1.5s"></span>
+    <span class="star" style="top:32%;left:-15%;animation-duration:2.3s;animation-delay:2.1s"></span>
+    <span class="star" style="top:44%;left:-22%;animation-duration:2.7s;animation-delay:2.9s"></span>
+    <span class="star" style="top:52%;left:-10%;animation-duration:2.4s;animation-delay:3.5s"></span>
+    <span class="star" style="top:64%;left:-20%;animation-duration:2.6s;animation-delay:4.1s"></span>
+    <span class="star" style="top:74%;left:-16%;animation-duration:2.3s;animation-delay:4.8s"></span>
+    <span class="star" style="top:84%;left:-22%;animation-duration:2.7s;animation-delay:5.2s"></span>
+    <span class="star" style="top:18%;left:-28%;animation-duration:2.1s;animation-delay:5.8s"></span>
+  </div>
+
+  <div id="cinemaModal" style="position:fixed;inset:0;background:rgba(0,0,0,.8);display:flex;align-items:center;justify-content:center;z-index:999;opacity:0;visibility:hidden;transition:.3s" onclick="if(event.target.id==='cinemaModal'){this.classList.remove('active');document.getElementById('cinemaVideo').pause()}">
+      <div style="width:min(900px,90vw);border-radius:20px;overflow:hidden;background:#000;box-shadow:0 30px 80px rgba(0,0,0,.6);position:relative">
+        <video id="cinemaVideo" style="width:100%;max-height:80vh;object-fit:contain" controls playsinline>
+          <source src="1.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+  <div class="wrap">
+    <header class="topbar">
+      <div class="container nav">
+        <div class="brand">
+          <div class="brand-mark"><span>✦</span></div>
+          <div class="brand-text">
+            <div class="eyebrow">beauty atelier</div>
+            <div class="brand-title">Elvan Akyüz Beauty</div>
+          </div>
+        </div>
+        <nav class="nav-links">
+          <a href="#anasayfa">anasayfa</a>
+          <a href="#hakkinda">hakkında</a>
+          <a href="#hizmetler">hizmetler</a>
+          <a href="#yorumlar">yorumlar</a>
+          <a href="#iletisim">iletişim</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="anasayfa">
+        <div class="container">
+          <div class="hero-video-shell reveal">
+            <div class="hero-video-wrap">
+              <div class="hero-video-frame">
+                <video id="heroVideo" autoplay muted loop playsinline preload="auto">
+                  <source src="1.mp4" type="video/mp4" />
+                </video>
+                <button class="video-play-btn" id="playBtn" type="button" aria-label="videoyu oynat"></button>
+                <div class="video-controls-mini">
+                  <button class="video-mini-btn" id="muteBtn" type="button">🔇</button>
+                  <button class="video-mini-btn" id="speedBtn" type="button">1x</button>
+                </div>
+            </div>
+            </div>
+            <aside class="hero-card">
+              <div class="hero-photo">
+                <div class="floating-note">
+                  <span>ön plana çıkan çizgi</span>
+                  <strong>cilt bakımı ve estetik dokunuşta premium görünüm</strong>
+                </div>
+              </div>
+              <div class="hero-points">
+                <div class="hero-point">
+                  <div class="dot"></div>
+                  <div>
+                    <b>kadıköyde tercih edilen bakım adresi</b>
+                    <span>merkezi konum hızlı dönüş ve dikkat çeken premium sunum ile ilk anda güven veren bir deneyim</span>
+                  </div>
+                </div>
+                <div class="hero-point">
+                  <div class="dot"></div>
+                  <div>
+                    <b>tek noktada çok yönlü güzellik hizmeti</b>
+                    <span>cilt bakımı kalıcı makyaj bölgesel incelme iğneli epilasyon ve bakım uygulamalarıyla kapsamlı hizmet akışı</span>
+                  </div>
+                </div>
+                <div class="hero-point">
+                  <div class="dot"></div>
+                  <div>
+                    <b>satışa hazır güçlü metin kurgusu</b>
+                    <span>site içinde doğrudan randevuya yönlendiren net başlıklar ve öne çıkan çağrı butonları</span>
+                  </div>
+                </div>
+              </div>
+            </aside>
+          </div>
+
+          <div class="hero-grid">
+          <article class="hero-copy reveal">
+            <div class="badge">Kadıköy güzellik salonu · 5.0 puan · randevu odaklı premium deneyim</div>
+            <h1>
+              <span class="hero-script">ışıltını öne çıkar</span>
+              kadıköyde güzelliğin yeni standardı
+            </h1>
+            <p class="lead">Elvan Akyüz Beauty Kadıköy'de cilt bakımı kalıcı makyaj bölgesel incelme iğneli epilasyon ve bakım uygulamalarında profesyonel dokunuş sunar Her detay daha canlı daha bakımlı daha güçlü görünmeniz için planlanır</p>
+            <div class="cta-row">
+              <a class="btn gold" href="https://wa.me/905413032022" target="_blank" rel="noopener">randevu al</a>
+              <a class="btn" href="tel:+905413032022">ara</a>
+              <a class="btn" href="https://www.instagram.com/elvanakyuzbeauty/" target="_blank" rel="noopener">instagram</a>
+            </div>
+            <div class="micro-stats">
+              <div class="stat"><strong>5.0</strong><span>yüksek memnuniyet etkisi oluşturan güçlü ilk izlenim</span></div>
+              <div class="stat"><strong>Kadıköy</strong><span>merkezi konum hızlı ulaşım kolay randevu akışı</span></div>
+              <div class="stat"><strong>Premium</strong><span>bakım odaklı temiz estetik ve sonuç odaklı yaklaşım</span></div>
+            </div>
+          </article>
+
+          </div>
+      </section>
+
+      <section id="hakkinda">
+        <div class="container">
+          <div class="section-head reveal">
+            <div>
+              <div class="section-tag">signature glow</div>
+              <h2>istanbul kadıköyde en çok tercih edilen güzellik deneyimine yakın bir premium kurgu</h2>
+            </div>
+            <p class="section-text">Bu yapı müşteri çeken metin mantığıyla kuruldu uzun uzun anlatan değil güven veren hızlı karar aldıran ve randevuya götüren bir salon dili kullanır Kadıköy lokasyonu yüksek puan etkisi ve kapsamlı hizmet seti öne çıkarılır</p>
+          </div>
+
+          <div class="trust-grid">
+            <div class="glass reveal">
+              <h3>kadıköyde güçlü konum etkisi</h3>
+              <p>Osmanağa merkezli lokasyon sayesinde salon arayan kullanıcı için ulaşılabilir güvenli ve hızlı karar verdiren bir tercih noktası oluşturur</p>
+            </div>
+            <div class="glass reveal">
+              <h3>randevuya götüren net akış</h3>
+              <p>Sayfa boyunca randevu al ara ve instagram butonları görünür tutuldu ziyaretçi tek dokunuşla iletişime geçebilir</p>
+            </div>
+            <div class="glass reveal">
+              <h3>premium estetik dil</h3>
+              <p>Altın tonlu hızlı kayan yıldızlar koyu lüks zemin ve kurşun kalem hissi veren imza dokunuşları ile akılda kalan bir görünüm kuruldu</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container info-grid">
+          <div class="glass reveal">
+            <div class="section-tag">why clients choose</div>
+            <h2>güzellikte tek hizmet değil sonuç hissi satan bir vitrin</h2>
+            <p class="section-text">Salon için hazırlanan bu metinler müşteri gözünden yazıldı Daha bakımlı görünüm doğal etki canlı cilt kalıcı düzen ve konforlu deneyim gibi satın alma sebepleri öne çıkarıldı</p>
+          </div>
+          <div class="glass reveal">
+            <h3>öne çıkan satış cümleleri</h3>
+            <p>kadıköyde profesyonel cilt bakımı ve kalıcı makyaj için güven veren güzellik merkezi</p>
+            <p style="margin-top:10px">kişiye uygun bakım planı ile daha canlı daha pürüzsüz daha aydınlık görünüm</p>
+            <p style="margin-top:10px">estetik dokunuşları premium ortam ve düzenli randevu deneyimiyle buluşturan özel salon</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="hizmetler">
+        <div class="container">
+          <div class="section-head reveal">
+            <div>
+              <div class="section-tag">beauty menu</div>
+              <h2>hizmetler</h2>
+            </div>
+            <p class="section-text">Hizmet başlıkları salonun açık görünen içerikleri ve paylaşımlarındaki odak alanlara göre satış diliyle düzenlendi</p>
+          </div>
+
+          <div class="services">
+            <article class="service reveal">
+              <div class="service-top">
+                <div class="service-icon">✦</div>
+                <h3>profesyonel cilt bakımı</h3>
+              </div>
+              <p>nem dengesi canlılık ve daha aydınlık görünüm hedefleyen uygulamalarla cildin bakımlı ve taze görünümünü öne çıkaran seanslar</p>
+              <small>ışıltılı ve sıkı cilt görünümü</small>
+            </article>
+
+            <article class="service reveal">
+              <div class="service-top">
+                <div class="service-icon">✧</div>
+                <h3>kalıcı makyaj</h3>
+              </div>
+              <p>günlük rutini kolaylaştıran daha düzenli ve belirgin yüz ifadesi sağlayan doğal sonuç odaklı kalıcı makyaj uygulamaları</p>
+              <small>net ifade doğal etki</small>
+            </article>
+
+            <article class="service reveal">
+              <div class="service-top">
+                <div class="service-icon">✦</div>
+                <h3>bölgesel incelme</h3>
+              </div>
+              <p>form görünümünü destekleyen daha sıkı ve toparlanmış siluet hedefiyle planlanan bakım odaklı vücut uygulamaları</p>
+              <small>daha fit daha dengeli görünüm</small>
+            </article>
+
+            <article class="service reveal">
+              <div class="service-top">
+                <div class="service-icon">✧</div>
+                <h3>iğneli epilasyon</h3>
+              </div>
+              <p>kişiye özel ihtiyaçlara göre ilerleyen detaylı uygulama süreciyle daha temiz ve düzenli görünüm sağlayan epilasyon hizmeti</p>
+              <small>bakımlı pürüzsüz etki</small>
+            </article>
+
+            <article class="service reveal">
+              <div class="service-top">
+                <div class="service-icon">✦</div>
+                <h3>boyun ve rahatlatıcı bakım uygulamaları</h3>
+              </div>
+              <p>paylaşımlarda öne çıkan rahatlatıcı bakım vurgusunu destekleyen konfor hissi ve yenilenme etkisini güçlendiren seanslar</p>
+              <small>rahatlama ve yenilenme hissi</small>
+            </article>
+
+            <article class="service reveal">
+              <div class="service-top">
+                <div class="service-icon">✧</div>
+                <h3>kişiye özel bakım planı</h3>
+              </div>
+              <p>ihtiyaca göre şekillenen uygulama önerileriyle tek işlem değil bütünlüklü bakım deneyimi sunan yönlendirme sistemi</p>
+              <small>kişisel hedefe uygun güzellik planı</small>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <div class="section-head reveal">
+            <div>
+              <div class="section-tag">visual mood</div>
+              <h2>premium atmosfer</h2>
+            </div>
+            <p class="section-text">Galerideki görsel yapı salonun lüks estetik çizgisini desteklemek için hazırlandı Kadın odaklı şık ama ağır olmayan bir premium his veriyor</p>
+          </div>
+
+          <div class="gallery">
+            <div class="gallery-card tall reveal">
+              <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=1200&q=80" alt="Elvan Akyüz Beauty premium güzellik atmosferi" />
+              <div class="gallery-label">kadıköy premium beauty mood</div>
+            </div>
+            <div class="gallery-card reveal">
+              <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1000&q=80" alt="Profesyonel cilt bakım deneyimi" />
+              <div class="gallery-label">cilt bakımı</div>
+            </div>
+            <div class="gallery-card reveal">
+              <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1000&q=80" alt="Kalıcı makyaj ve estetik uygulamalar" />
+              <div class="gallery-label">kalıcı makyaj</div>
+            </div>
+            <div class="gallery-card reveal">
+              <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=1000&q=80" alt="Bakım ve yenilenme hissi" />
+              <div class="gallery-label">bakım rutini</div>
+            </div>
+            <div class="gallery-card reveal">
+              <img src="https://images.unsplash.com/photo-1519415943484-9fa1873496d4?auto=format&fit=crop&w=1000&q=80" alt="Bölgesel incelme ve vücut bakımı" />
+              <div class="gallery-label">bölgesel incelme</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="yorumlar">
+        <div class="container">
+          <div class="section-head reveal">
+            <div>
+              <div class="section-tag">social proof</div>
+              <h2>güven veren yorum etkisi</h2>
+            </div>
+            <p class="section-text">Elindeki bilgiye göre 5.0 puan ve 7 yorum etkisi güçlü bir güven katmanı oluşturuyor Aşağıdaki bloklar satışa uygun sosyal kanıt diliyle kurgulandı</p>
+          </div>
+
+          <div class="reviews">
+            <article class="review reveal">
+              <div class="review-top">
+                <b>yüksek memnuniyet algısı</b>
+                <span class="stars">★★★★★</span>
+              </div>
+              <p>ilk bakışta güven veren puan yapısı salon tercihini hızlandırır özellikle yeni müşteri için karar eşiğini düşürür</p>
+            </article>
+            <article class="review reveal">
+              <div class="review-top">
+                <b>bakım odaklı sonuç hissi</b>
+                <span class="stars">★★★★★</span>
+              </div>
+              <p>cilt bakımı kalıcı makyaj ve güzellik uygulamalarında daha düzenli daha canlı daha estetik görünüm beklentisine hitap eder</p>
+            </article>
+            <article class="review reveal">
+              <div class="review-top">
+                <b>tekrar randevu potansiyeli</b>
+                <span class="stars">★★★★★</span>
+              </div>
+              <p>kişiye özel planlama ve çok yönlü hizmet menüsü düzenli müşteri dönüşünü destekleyen sağlam bir avantaj oluşturur</p>
+            </article>
+          </div>
+
+          <div class="cta-band reveal">
+            <div>
+              <h3>kendin için doğru bakımı erteleme</h3>
+              <p>kadıköyde profesyonel güzellik uygulamaları için hızlı randevu oluştur şimdi iletişime geç</p>
+            </div>
+            <div class="cta-row" style="margin:0">
+              <a class="btn gold" href="https://wa.me/905413032022" target="_blank" rel="noopener">randevu al</a>
+              <a class="btn" href="tel:+905413032022">ara</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <div class="section-head reveal">
+            <div>
+              <div class="section-tag">faq</div>
+              <h2>sık sorulanlar</h2>
+            </div>
+            <p class="section-text">Sitede satış kapatmayı kolaylaştıran kısa net ve güven veren soru cevap alanı bırakıldı</p>
+          </div>
+          <div class="faq">
+            <div class="faq-item reveal">
+              <h3>randevu nasıl oluşturulur</h3>
+              <p>whatsapp ara veya instagram butonlarından tek dokunuşla iletişime geçip uygun saat için hızlıca randevu oluşturabilirsiniz</p>
+            </div>
+            <div class="faq-item reveal">
+              <h3>hangi hizmetler öne çıkıyor</h3>
+              <p>cilt bakımı kalıcı makyaj bölgesel incelme iğneli epilasyon ve bakım uygulamaları salonun güçlü görünen hizmet başlıkları arasında yer alır</p>
+            </div>
+            <div class="faq-item reveal">
+              <h3>konum kolay mı</h3>
+              <p>kadıköy osmanaağa tarafındaki merkezi konum sayesinde ulaşım hızlı ve pratiktir</p>
+            </div>
+            <div class="faq-item reveal">
+              <h3>ilk kez gelecekler için uygun mu</h3>
+              <p>evet karar vermeyi kolaylaştıran net hizmet dili ve direkt iletişim kanalları sayesinde ilk randevu için rahat bir yapı sunar</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="iletisim">
+        <div class="container">
+          <div class="section-head reveal">
+            <div>
+              <div class="section-tag">contact</div>
+              <h2>iletişim ve konum</h2>
+            </div>
+            <p class="section-text">Telefon whatsapp ve instagram aksiyonu belirgin tutuldu Android tarayıcı üst alt bar alanlarına karşı güvenli boşluklar eklendi mobil yapı bozulmadan çalışır</p>
+          </div>
+          <div class="contact-grid">
+            <div class="contact-card reveal">
+              <h3>Elvan Akyüz Beauty</h3>
+              <p>kadıköyde premium güzellik deneyimi için hızlı iletişim kanallarını kullanarak hemen randevu oluşturabilirsiniz</p>
+              <div class="contact-list">
+                <div class="contact-line">
+                  <span>telefon</span>
+                  <a href="tel:+905413032022">0541 303 20 22</a>
+                </div>
+                <div class="contact-line">
+                  <span>adres</span>
+                  <strong>Osmanağa Gen. Asım Gündüz Caddesi Aybek Apartman Kat 4 No 11 Kadıköy İstanbul</strong>
+                </div>
+                <div class="contact-line">
+                  <span>instagram</span>
+                  <a href="https://www.instagram.com/elvanakyuzbeauty/" target="_blank" rel="noopener">@elvanakyuzbeauty</a>
+                </div>
+              </div>
+              <div class="cta-row" style="margin-top:18px">
+                <a class="btn gold" href="https://wa.me/905413032022" target="_blank" rel="noopener">randevu al</a>
+                <a class="btn" href="tel:+905413032022">ara</a>
+                <a class="btn" href="https://www.instagram.com/elvanakyuzbeauty/" target="_blank" rel="noopener">instagram</a>
+              </div>
+            </div>
+            <div class="map-wrap reveal">
+              <iframe loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Elvan%20Aky%C3%BCz%20Beauty%20Kad%C4%B1k%C3%B6y&z=15&output=embed"></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-box">
+        <div>Elvan Akyüz Beauty için hazırlanmış premium demo site yapısı</div>
+        <div>Kadıköy İstanbul · randevu odaklı mobil uyumlu lüks görünüm</div>
+      </div>
+    </footer>
+  </div>
+
+  <div class="sticky-cta">
+    <a class="primary" href="https://wa.me/905413032022" target="_blank" rel="noopener">randevu al</a>
+    <a href="tel:+905413032022">ara</a>
+    <a href="https://www.instagram.com/elvanakyuzbeauty/" target="_blank" rel="noopener">instagram</a>
+  </div>
+
+  <script>
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('show');
+        }
+      });
+    }, {threshold:0.12});
+
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+    const heroVideo = document.getElementById('heroVideo');
+    const playBtn = document.getElementById('playBtn');
+    const muteBtn = document.getElementById('muteBtn');
+    const speedBtn = document.getElementById('speedBtn');
+
+    function syncVideoUi(){
+      if(!heroVideo || !playBtn || !muteBtn || !speedBtn) return;
+      playBtn.style.opacity = heroVideo.paused ? '1' : '0';
+      playBtn.style.pointerEvents = heroVideo.paused ? 'auto' : 'none';
+      muteBtn.textContent = heroVideo.muted ? '🔇' : '🔊';
+      speedBtn.textContent = heroVideo.playbackRate === 2 ? '2x' : '1x';
+    }
+
+    async function playHeroVideo(){
+      if(!heroVideo) return;
+      try{
+        heroVideo.muted = false;
+        heroVideo.volume = 1;
+        await heroVideo.play();
+      }catch(e){
+        heroVideo.muted = true;
+        await heroVideo.play().catch(()=>{});
+      }
+      syncVideoUi();
+    }
+
+    function toggleMute(event){
+      if(event) event.stopPropagation();
+      if(!heroVideo) return;
+      heroVideo.muted = !heroVideo.muted;
+      syncVideoUi();
+    }
+
+    function setSpeed(event){
+      if(event) event.stopPropagation();
+      if(!heroVideo) return;
+      heroVideo.playbackRate = heroVideo.playbackRate === 1 ? 2 : 1;
+      syncVideoUi();
+    }
+
+    playBtn?.addEventListener('click', playHeroVideo);
+    muteBtn?.addEventListener('click', toggleMute);
+    speedBtn?.addEventListener('click', setSpeed);
+
+    heroVideo?.addEventListener('click', ()=>{
+      if(heroVideo.paused){
+        playHeroVideo();
+      }else{
+        heroVideo.pause();
+        syncVideoUi();
+      }
+    });
+
+    heroVideo?.addEventListener('play', syncVideoUi);
+    heroVideo?.addEventListener('pause', syncVideoUi);
+    heroVideo?.addEventListener('volumechange', syncVideoUi);
+    heroVideo?.addEventListener('ratechange', syncVideoUi);
+    heroVideo?.addEventListener('loadeddata', ()=>{
+      heroVideo.play().catch(()=>{});
+      syncVideoUi();
+    });
+
+    syncVideoUi();
+  </script>
+</body>
+</html>
